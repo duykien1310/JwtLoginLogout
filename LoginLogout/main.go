@@ -7,7 +7,7 @@ import (
 
 func main() {
 	database.Connection()
-	
+
 	// Initialize Router
 	controller := controller.AuthController()
 	controller.Run(":8080")

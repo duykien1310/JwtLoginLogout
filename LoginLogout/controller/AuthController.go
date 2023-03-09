@@ -13,6 +13,7 @@ func AuthController() *gin.Engine {
 		api.GET("/login", service.Login)
 		api.POST("/user/register", service.RegisterUser)
 		api.GET("/logout", service.Logout)
+		api.PATCH("/forgotpass/:email", service.Forgot)
 	}
 	return router
 }

@@ -10,13 +10,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type TokenRequest struct {
+type LoginRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
 }
 
 func Login(context *gin.Context) {
-	var request TokenRequest
+	var request LoginRequest
 	var user models.User
 	if err := context.ShouldBindJSON(&request); err != nil {
 		context.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
