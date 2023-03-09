@@ -10,7 +10,7 @@ func AuthController() *gin.Engine {
 	router := gin.Default()
 	api := router.Group("/api")
 	{
-		api.GET("/login", service.GenerateToken)
+		api.GET("/login", service.Login)
 		api.POST("/user/register", service.RegisterUser)
 		api.GET("/logout", service.Logout)
 	}

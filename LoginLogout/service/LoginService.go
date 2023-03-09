@@ -15,7 +15,7 @@ type TokenRequest struct {
 	Password string `json:"password"`
 }
 
-func GenerateToken(context *gin.Context) {
+func Login(context *gin.Context) {
 	var request TokenRequest
 	var user models.User
 	if err := context.ShouldBindJSON(&request); err != nil {
