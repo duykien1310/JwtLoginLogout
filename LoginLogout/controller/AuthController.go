@@ -7,6 +7,7 @@ import (
 )
 
 func AuthController() *gin.Engine {
+	// Initialize Router
 	router := gin.Default()
 	api := router.Group("/api")
 	{
