@@ -43,7 +43,15 @@ func Login(context *gin.Context) {
 		return
 	}
 
-	context.SetCookie("access_token", tokenString, 10000, "/", "localhost", false, true)
+	redisClient := database.InitRedis()
+
+	// Thêm access token vào Redis cache với key là "access_token" và giá trị là "my_access_token"
+	errredis := redisClient.Set("access_token", tokenString, 0).Err()
+	if errredis != nil {
+		panic(errredis)
+	}
+
+	// context.SetCookie("access_token", tokenString, 10000, "/", "localhost", false, true)
 
 	context.JSON(http.StatusOK, gin.H{"token": tokenString, "status": "success", "email": request.Email})
 }

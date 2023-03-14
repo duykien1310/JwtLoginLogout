@@ -6,9 +6,8 @@ import (
 )
 
 func main() {
-	database.Connection()
+	database.ConnectPostgres()
 
-	
-	controller := controller.AuthController()
+	controller := controller.Router()
 	controller.Run(":8080")
 }
